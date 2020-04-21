@@ -33,4 +33,21 @@ public class Q0768_MaxChunksToMakeSorted {
             return b - a;
         }
     }
+
+    public int maxChunksToSorted2(int[] arr) {
+        int[] max=new int[arr.length];
+        max[0] = arr[0];
+        for(int i=1;i<arr.length;i++){
+            max[i]=Math.max(arr[i],max[i-1]);
+        }
+        int min=Integer.MAX_VALUE;
+        int result=0;
+        for(int i=arr.length-1;i>=0;i--){
+            if(min>=max[i]){
+                result++;
+            }
+            min=Math.min(arr[i],min);
+        }
+        return result;
+    }
 }
