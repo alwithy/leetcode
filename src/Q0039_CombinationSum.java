@@ -16,13 +16,13 @@ public class Q0039_CombinationSum {
     }
 
     /**
-     * @param candidates 目标数组
+     * @param arr 目标数组
      * @param residue 剩余值
      * @param begin 本次搜索的起点
      * @param path 本次遍历中使用到的元素
      * @param res 解集
      */
-    private void dfs(int[] candidates,
+    private void dfs(int[] arr,
                      int residue,
                      int begin,
                      Deque<Integer> path,
@@ -32,15 +32,15 @@ public class Q0039_CombinationSum {
             return;
         }
 
-        for (int i = begin; i < candidates.length; i++) {
+        for (int i = begin; i < arr.length; i++) {
             //数组已经经过排序，所以剪枝
             //若residue减去当前candidates[i]小于0,则之后的元素不可能满足条件
-            if (residue < candidates[i]) {
+            if (residue < arr[i]) {
                 break;
             }
 
-            path.addLast(candidates[i]);
-            dfs(candidates, residue - candidates[i], i, path, res);
+            path.addLast(arr[i]);
+            dfs(arr, residue - arr[i], i, path, res);
             path.removeLast();
         }
     }
