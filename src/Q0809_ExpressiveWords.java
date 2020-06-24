@@ -22,7 +22,6 @@ public class Q0809_ExpressiveWords {
         }
         for (String word : words) {
             if (isStretchy(deque, word)) res++;
-
         }
 
         return res;
