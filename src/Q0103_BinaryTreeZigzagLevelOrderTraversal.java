@@ -39,14 +39,13 @@ public class Q0103_BinaryTreeZigzagLevelOrderTraversal {
                     }
                 }
             } else {
-//                for (int i = curLevel.size() - 1; i >= 0; i--) {
-//                    TreeNode node = curLevel.get(i);
-//                    curVal.add(node.val);
-//                }
+                for (int i = curLevel.size() - 1; i >= 0; i--) {
+                    TreeNode node = curLevel.get(i);
+                    curVal.add(node.val);
+                }
 
                 for (int i = 0; i < curLevel.size(); i++) {
                     TreeNode node = curLevel.get(i);
-                    curVal.add(0, node.val);
                     if (node.left != null) {
                         temp.add(node.left);
                     }
