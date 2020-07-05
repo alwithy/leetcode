@@ -1,5 +1,5 @@
 public class Q0033_SearchInRotatedSortedArray {
-    public static int search(int[] nums, int target) {
+    public static int search1(int[] nums, int target) {
         if (nums == null || nums.length < 1) {
             return -1;
         }
@@ -35,6 +35,42 @@ public class Q0033_SearchInRotatedSortedArray {
                 r = mid - 1;
             } else {//target == nums[mid]
                 return mid;
+            }
+        }
+
+        return nums[l] == target ? l : -1;
+    }
+
+    public static int search(int[] nums, int target) {
+        if (nums == null || nums.length < 1) {
+            return -1;
+        }
+
+        int l = 0;
+        int r = nums.length - 1;
+        int mid;
+
+        while (l < r) {
+            mid = l + ((r - l) >> 1);
+
+            if (nums[l] <= nums[mid]) {
+                // 若前半段有序
+                if (target < nums[l] || target > nums[mid]) {
+                    l = mid + 1;
+                } else if (target == nums[mid]){
+                    return mid;
+                } else {
+                    r = mid - 1;
+                }
+            } else {
+                // 若后半段有序
+                if (target < nums[mid] || target > nums[r]) {
+                    r = mid - 1;
+                } else if (target == nums[mid]){
+                    return mid;
+                } else {
+                    l = mid;
+                }
             }
         }
 
