@@ -1,4 +1,4 @@
-public class Q918_MaximumSumCircularSubarray {
+public class Q0918_MaximumSumCircularSubarray {
     public static int maxSubarraySumCircular(int[] A) {
         int res = 0;
         if (A == null || A.length == 0) {
