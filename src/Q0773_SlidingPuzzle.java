@@ -27,11 +27,7 @@ public class Q0773_SlidingPuzzle {
             time = times.poll();
             moved.add(help(cur));
             if (check(cur)) {
-                if (res < 0) {
-                    res = time;
-                } else {
-                    res = Math.min(time, res);
-                }
+                res = time;
                 break;
             }
             int zeroI = 0;
