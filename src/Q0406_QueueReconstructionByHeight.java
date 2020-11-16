@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class Q406_QueueReconstructionByHeight {
+public class Q0406_QueueReconstructionByHeight {
     public static int[][] reconstructQueue(int[][] people) {
         //按h升序,k降序排列
         Arrays.sort(people, new Comparator<int[]>() {
