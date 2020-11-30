@@ -1,5 +1,5 @@
 public class Q0767_ReorganizeString {
-    public static String reorganizeString(String S) {
+    public static String reorganizeString1(String S) {
         if (S == null || S.length() == 0) return "";
         // chars存放各个字母出现的次数
         int[] chars = new int[26];
@@ -69,6 +69,43 @@ public class Q0767_ReorganizeString {
         }
 
         return left > 0 ? "" : res.toString();
+    }
+
+    public static String reorganizeString(String S) {
+        if (S == null || S.length() == 0) return "";
+        // chars存放各个字母出现的次数
+        int[] chars = new int[26];
+        int len = S.length();
+        //max记录出现次数最多的字符
+        int max = 0;
+        for (int i = 0; i < len; i++) {
+            int cur = S.charAt(i) - 'a';
+            chars[cur]++;
+            if (chars[cur] > chars[max]) {
+                max = cur;
+            }
+        }
+        if (chars[max] > (len + 1)/2) {
+            return "";
+        }
+        char[] res = new char[len];
+        int index = 0;
+        while (chars[max] > 0) {
+            res[index] = (char)(max + 'a');
+            index += 2;
+            if (index >= len) index = 1;
+            chars[max]--;
+        }
+        for (int i = 0; i < 26; i++) {
+            while (chars[i] > 0) {
+                res[index] = (char)(i + 'a');
+                index += 2;
+                if (index >= len) index = 1;
+                chars[i]--;
+            }
+        }
+
+        return String.valueOf(res);
     }
 
     public static void main(String[] args) {
