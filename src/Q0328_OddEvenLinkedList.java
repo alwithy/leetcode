@@ -1,4 +1,4 @@
-public class Q328_OddEvenLinkedList {
+public class Q0328_OddEvenLinkedList {
     public class ListNode {
         int val;
         ListNode next;
