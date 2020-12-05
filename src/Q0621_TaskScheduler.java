@@ -2,6 +2,26 @@ import java.util.Arrays;
 
 public class Q0621_TaskScheduler {
     public static int leastInterval(char[] tasks, int n) {
+        //官方题解2
+        int[] chs = new int[26];
+        //max记录任务的最多执行次数
+        int max = 0;
+        for (int i = 0; i < tasks.length; i++) {
+            int c = tasks[i] - 'A';
+            chs[c]++;
+            max = Math.max(max, chs[c]);
+        }
+
+        int maxCount = 0;
+        for (int c : chs) {
+            if (c == max) {
+                maxCount++;
+            }
+        }
+        return Math.max((max - 1) * (n + 1) + maxCount, tasks.length);
+    }
+
+    public static int leastInterval1(char[] tasks, int n) {
         int[] taskNum = new int[26];
         for (int i = 0; i < tasks.length; i++) {
             taskNum[tasks[i] - 'A']++;
@@ -38,6 +58,8 @@ public class Q0621_TaskScheduler {
                 'J','J','K','K','L','L',
                 'M','M','N','N','O','O',
                 'P','P','Q','Q','R','R'};
+//        arr = new char[]{'A', 'A', 'A', 'B', 'B', 'B', 'C', 'C', 'C', 'D', 'D', 'E'};
+        System.out.println(leastInterval1(arr,2));
         System.out.println(leastInterval(arr,2));
     }
 }
