@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-public class Q166_FractionToRecurringDecimal {
+public class Q0166_FractionToRecurringDecimal {
     public static String fractionToDecimal(int numerator, int denominator) {
         if (denominator == 0) {
             return "";
