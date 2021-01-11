@@ -1,4 +1,4 @@
-public class Q5639_FindMinimumTimeToFinishAllJobs {
+public class Q1723_FindMinimumTimeToFinishAllJobs {
     public static int minimumTimeRequired(int[] jobs, int k) {
         int n = jobs.length;
         //cost[i]表示完成工作集合i所需要的总时间
