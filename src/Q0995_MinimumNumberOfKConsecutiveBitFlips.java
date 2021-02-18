@@ -9,12 +9,12 @@ public class Q0995_MinimumNumberOfKConsecutiveBitFlips {
                 A[i - K] -= 2;
             }
             if ((A[i] + count) % 2 == 0) {
-                if (i > A.length - K) {
+                if (i > A.length - K) {//此时无法翻转
                     return -1;
                 }
                 res++;
                 count++;
-                A[i] += 2;
+                A[i] += 2;//做标记，证明我们翻转过
             }
         }
 
