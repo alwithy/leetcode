@@ -34,7 +34,7 @@ public class Q5687_MaximumScoreFromPerformingMultiplicationOperations {
         int[][] dp = new int[m + 1][m + 1];
         //dp[i][j] = max: 1. dp[i - 1][j] + nums[i - 1] * multi[i + j - 1]
         //                2. dp[i][j - 1] + nums[n - j] * multi[i + j - 1]
-        int res = Integer.MIN_VALUE;
+
         //边界条件，只选左边
         for (int i = 1; i <= m; i++) {
             dp[i][0] = dp[i - 1][0] + nums[i - 1] * multipliers[i - 1];
@@ -43,6 +43,7 @@ public class Q5687_MaximumScoreFromPerformingMultiplicationOperations {
         for (int j = 1; j <= m; j++) {
             dp[0][j] = dp[0][j - 1] + nums[n - j] * multipliers[j - 1];
         }
+        int res = Math.max(dp[0][m], dp[m][0]);
         for (int i = 1; i <= m; i++) {
             for (int j = 1; j + i <= m; j++) {
                 int chooseL = dp[i - 1][j] + nums[i - 1] * multipliers[i + j - 1];
