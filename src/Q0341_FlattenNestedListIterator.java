@@ -23,9 +23,44 @@ public class Q0341_FlattenNestedListIterator {
         public NestedIterator(List<NestedInteger> nestedList) {
             index = 0;
             list = new ArrayList<>();
-            buildList(nestedList, list);
+            //buildList(nestedList, list);
+
+            //非递归构建
+            NestedInteger node;
+            int index;
+            Deque<Integer> indexes = new LinkedList<>();
+            Deque<NestedInteger> nodes = new LinkedList<>();
+            for (int i = 0; i < nestedList.size(); i++) {
+                indexes.addLast(0);
+                nodes.addLast(nestedList.get(i));
+
+                while (!nodes.isEmpty()) {
+                    node = nodes.pollLast();
+                    index = indexes.pollLast();
+
+                    //是整数则直接加进列表
+                    if (node.isInteger()) {
+                        list.add(node.getInteger());
+                        continue;
+                    }
+
+                    //不是整数则判断当前应该访问的位置是否已经到列表末尾
+                    List<NestedInteger> list = node.getList();
+                    if (index == list.size()) {
+                        continue;
+                    }
+
+                    //还没到末尾时
+                    nodes.addLast(node);
+                    indexes.addLast(index + 1);
+
+                    nodes.addLast(list.get(index));
+                    indexes.addLast(0);
+                }
+            }
         }
 
+        //递归构建
         private void buildList(List<NestedInteger> nestedList, List<Integer> list) {
             NestedInteger node;
             for (int i = 0; i < nestedList.size(); i++) {
